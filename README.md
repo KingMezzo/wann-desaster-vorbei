@@ -1,2 +1,3 @@
-# wann-disaster-vorbei
-Zeigt an, wann das Disaster (Absturtz) bzw. Schulstunde (ENDLICH) vorbei ist
+# Öffnen
+
+➡️➡️ [Hier klicken, um App zu starten (keine installation nötig)](https)
