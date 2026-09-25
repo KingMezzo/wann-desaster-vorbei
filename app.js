@@ -41,6 +41,8 @@ const progressCircle = document.getElementById('progressCircle');
 const startTimeDisplay = document.getElementById('startTimeDisplay');
 const endTimeDisplay = document.getElementById('endTimeDisplay');
 const ambientGlow = document.getElementById('ambientGlow');
+const memeTicker = document.getElementById('memeTicker');
+let hasFiredConfetti = false;
 
 const openSettingsBtn = document.getElementById('openSettingsBtn');
 const closeSettingsBtn = document.getElementById('closeSettingsBtn');
@@ -82,16 +84,59 @@ const determineType = (name) => {
     return 'lesson';
 };
 
-const updateUIColors = (type) => {
+const getMemeForTime = (remaining, type) => {
+    if (type === 'break') {
+        if (remaining > 300) return "Entspannung pur ☕";
+        if (remaining <= 300 && remaining > 120) return "Noch 5 Min: Zeit, sich langsam auf den Weg zu machen...";
+        if (remaining <= 120) return "Sprint zum Klassenzimmer einleiten! 🏃‍♂️💨";
+        return "Pause!";
+    }
+    
+    // Lesson
+    if (remaining > 2400) return "Das wird noch dauern... 🥱";
+    if (remaining <= 2400 && remaining > 1800) return "Immerhin schon ein bisschen geschafft.";
+    if (remaining <= 1800 && remaining > 900) return "Die Hälfte ist in Sicht!";
+    if (remaining <= 900 && remaining > 300) return "Endspurt! Nicht mehr lange.";
+    if (remaining <= 300 && remaining > 120) return "Noch 5 Min: Stifte heimlich einpacken 🤫";
+    if (remaining <= 120) return "Den Blickkontakt mit der Lehrkraft strikt meiden 👀";
+    return "";
+};
+
+const fireConfetti = () => {
+    if (typeof confetti === 'function') {
+        const duration = 3 * 1000;
+        const animationEnd = Date.now() + duration;
+        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 100 };
+
+        const randomInRange = (min, max) => Math.random() * (max - min) + min;
+
+        const interval = setInterval(function() {
+            const timeLeft = animationEnd - Date.now();
+            if (timeLeft <= 0) return clearInterval(interval);
+            
+            const particleCount = 50 * (timeLeft / duration);
+            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+        }, 250);
+    }
+};
+
+const updateUIColors = (type, remaining = null) => {
     // Reset colors
-    progressCircle.classList.remove('text-emerald', 'text-amber', 'text-slate');
-    countdownDisplay.classList.remove('text-emerald', 'text-amber', 'text-slate');
-    ambientGlow.classList.remove('bg-emerald-glow', 'bg-amber-glow', 'bg-slate-glow');
+    progressCircle.classList.remove('text-emerald', 'text-amber', 'text-slate', 'text-red-500');
+    countdownDisplay.classList.remove('text-emerald', 'text-amber', 'text-slate', 'text-red-500', 'animate-pulse');
+    ambientGlow.classList.remove('bg-emerald-glow', 'bg-amber-glow', 'bg-slate-glow', 'bg-red-500/20');
 
     if (type === 'lesson') {
-        progressCircle.classList.add('text-emerald');
-        countdownDisplay.classList.add('text-emerald');
-        ambientGlow.classList.add('bg-emerald-glow');
+        if (remaining !== null && remaining <= 120) {
+            progressCircle.classList.add('text-red-500');
+            countdownDisplay.classList.add('text-red-500', 'animate-pulse');
+            ambientGlow.classList.add('bg-red-500/20');
+        } else {
+            progressCircle.classList.add('text-emerald');
+            countdownDisplay.classList.add('text-emerald');
+            ambientGlow.classList.add('bg-emerald-glow');
+        }
     } else if (type === 'break') {
         progressCircle.classList.add('text-amber');
         countdownDisplay.classList.add('text-amber');
@@ -138,11 +183,13 @@ const updateTimer = () => {
         const remaining = endSec - currentSeconds;
         
         const type = activeEvent.type || determineType(activeEvent.name);
-        updateUIColors(type);
+        updateUIColors(type, remaining);
 
         currentEventName.textContent = activeEvent.name;
         countdownDisplay.textContent = formatTime(remaining);
         countdownLabel.textContent = "Verbleibend";
+        memeTicker.textContent = getMemeForTime(remaining, type);
+        hasFiredConfetti = false;
         
         if (nextEvent) {
             nextEventHint.textContent = `Danach: ${nextEvent.name}`;
@@ -169,6 +216,8 @@ const updateTimer = () => {
         countdownDisplay.textContent = formatTime(remaining);
         countdownLabel.textContent = `Bis ${nextEvent.name}`;
         nextEventHint.textContent = `Nächster Block: ${nextEvent.start}`;
+        memeTicker.textContent = "Die Ruhe vor dem Sturm...";
+        hasFiredConfetti = false;
         
         startTimeDisplay.textContent = "--:--";
         endTimeDisplay.textContent = nextEvent.start;
@@ -182,6 +231,12 @@ const updateTimer = () => {
         countdownDisplay.textContent = "00:00";
         countdownLabel.textContent = "Geschafft!";
         nextEventHint.textContent = "Bis morgen!";
+        memeTicker.textContent = "Freiheit! 🎉";
+        
+        if (!hasFiredConfetti) {
+            fireConfetti();
+            hasFiredConfetti = true;
+        }
         
         startTimeDisplay.textContent = "--:--";
         endTimeDisplay.textContent = "--:--";
