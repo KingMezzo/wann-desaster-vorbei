@@ -21,12 +21,12 @@ const mtsSchedule = [
     { id: 'mts_6',  name: '2. Pause',    start: '11:10', end: '11:30', type: 'break'  },
     { id: 'mts_7',  name: '5. Stunde',   start: '11:30', end: '12:15', type: 'lesson' },
     { id: 'mts_8',  name: '6. Stunde',   start: '12:15', end: '13:00', type: 'lesson' },
-    { id: 'mts_9',  name: 'Mittagspause',start: '13:00', end: '13:55', type: 'break'  },
-    { id: 'mts_10', name: '7. Stunde',   start: '13:55', end: '14:40', type: 'lesson' },
-    { id: 'mts_11', name: '8. Stunde',   start: '14:40', end: '15:25', type: 'lesson' },
+    { id: 'mts_9',  name: '7. Stunde (Mittagspause)', start: '13:00', end: '13:55', type: 'break'  },
+    { id: 'mts_10', name: '8. Stunde',   start: '13:55', end: '14:40', type: 'lesson' },
+    { id: 'mts_11', name: '9. Stunde',   start: '14:40', end: '15:25', type: 'lesson' },
     { id: 'mts_12', name: '3. Pause',    start: '15:25', end: '15:30', type: 'break'  },
-    { id: 'mts_13', name: '9. Stunde',   start: '15:30', end: '16:15', type: 'lesson' },
-    { id: 'mts_14', name: '10. Stunde',  start: '16:15', end: '17:00', type: 'lesson' }
+    { id: 'mts_13', name: '10. Stunde',  start: '15:30', end: '16:15', type: 'lesson' },
+    { id: 'mts_14', name: '11. Stunde',  start: '16:15', end: '17:00', type: 'lesson' }
 ];
 
 // =============================================================
