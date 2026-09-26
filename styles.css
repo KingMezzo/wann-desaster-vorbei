@@ -1,0 +1,211 @@
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+    background: linear-gradient(145deg, rgba(28, 31, 38, 0.7), rgba(28, 31, 38, 0.3));
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Glowing text */
+.text-shadow-glow {
+    text-shadow: 0 0 30px currentColor;
+}
+
+/* Modal animations classes added by JS */
+.modal-active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.modal-active #settingsContent {
+    transform: scale(1) !important;
+}
+
+/* Input styles for settings */
+.time-input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: white;
+    padding: 0.5rem 0.25rem;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s;
+}
+.time-input:focus {
+    border-color: #10b981; /* Emerald accent */
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+/* Fix time input icon in dark mode for webkit */
+::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(0.8);
+    opacity: 0.6;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+.event-name-input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: 500;
+    outline: none;
+    width: 100%;
+}
+.event-name-input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* Dynamic color classes for JS */
+.text-emerald {
+    color: #10b981;
+}
+.text-amber {
+    color: #f59e0b;
+}
+.text-slate {
+    color: #94a3b8;
+}
+
+.bg-emerald-glow {
+    background-color: rgba(16, 185, 129, 0.05);
+}
+.bg-amber-glow {
+    background-color: rgba(245, 158, 11, 0.05);
+}
+.bg-slate-glow {
+    background-color: rgba(148, 163, 184, 0.05);
+}
+
+/* ===== SETTINGS TABS ===== */
+.settings-tab {
+    color: rgba(255,255,255,0.45);
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+}
+.settings-tab:hover {
+    color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.05);
+}
+.settings-tab.active-tab {
+    color: #fff;
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.35);
+}
+
+.tab-panel {
+    display: flex;
+}
+.tab-panel.hidden {
+    display: none;
+}
+
+/* ===== WEEK PLAN GRID ===== */
+.week-plan-grid {
+    display: grid;
+    grid-template-columns: 52px repeat(5, 1fr);
+    gap: 4px;
+    min-width: 400px;
+}
+
+.week-plan-grid .day-header {
+    padding: 6px 4px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    border-radius: 8px;
+}
+
+.week-plan-grid .row-label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.04em;
+    height: 36px;
+}
+
+/* Lesson tile */
+.lesson-tile {
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.18s ease, border-color 0.18s ease;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+.lesson-tile:hover {
+    transform: scale(1.04);
+}
+.lesson-tile:active {
+    transform: scale(0.97);
+}
+
+/* Active lesson (green) */
+.lesson-tile.tile-lesson {
+    background: rgba(16, 185, 129, 0.18);
+    border-color: rgba(16, 185, 129, 0.4);
+    color: #10b981;
+    box-shadow: 0 0 0 0 rgba(16,185,129,0);
+}
+.lesson-tile.tile-lesson:hover {
+    background: rgba(16, 185, 129, 0.28);
+    box-shadow: 0 0 12px rgba(16,185,129,0.25);
+}
+
+/* Free period (red) */
+.lesson-tile.tile-free {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.35);
+    color: #ef4444;
+}
+.lesson-tile.tile-free:hover {
+    background: rgba(239, 68, 68, 0.25);
+    box-shadow: 0 0 12px rgba(239,68,68,0.2);
+}
+
+/* Tile text label */
+.lesson-tile .tile-label {
+    font-size: 9px;
+    font-weight: 700;
+    opacity: 0.85;
+    text-align: center;
+    line-height: 1.2;
+    pointer-events: none;
+}
