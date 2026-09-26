@@ -22,6 +22,17 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Fluid countdown ring – scales with viewport, min 220px, max 320px */
+.countdown-ring {
+    width: clamp(200px, 55vmin, 320px);
+    height: clamp(200px, 55vmin, 320px);
+}
+
+/* Fluid countdown number font size */
+.countdown-number {
+    font-size: clamp(2.5rem, 11vmin, 4.5rem);
+}
+
 /* Glowing text */
 .text-shadow-glow {
     text-shadow: 0 0 30px currentColor;
@@ -42,11 +53,13 @@
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.05);
     color: white;
-    padding: 0.5rem 0.25rem;
+    padding: 0.375rem 0.2rem;
     border-radius: 0.5rem;
     font-family: inherit;
+    font-size: 0.75rem;
     outline: none;
     transition: all 0.2s;
+    min-width: 0;
 }
 .time-input:focus {
     border-color: #10b981; /* Emerald accent */
@@ -125,9 +138,9 @@
 /* ===== WEEK PLAN GRID ===== */
 .week-plan-grid {
     display: grid;
-    grid-template-columns: 52px repeat(5, 1fr);
-    gap: 4px;
-    min-width: 400px;
+    grid-template-columns: 48px repeat(5, 1fr);
+    gap: 3px;
+    min-width: 340px;
 }
 
 .week-plan-grid .day-header {
