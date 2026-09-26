@@ -2,31 +2,31 @@
 // DEFAULT & MTS SCHEDULE
 // =============================================================
 const defaultSchedule = [
-    { id: '1',  name: '1. Stunde',  start: '07:50', end: '08:35', type: 'lesson' },
-    { id: '2',  name: '2. Stunde',  start: '08:35', end: '09:20', type: 'lesson' },
-    { id: '3',  name: '1. Pause',   start: '09:20', end: '09:40', type: 'break'  },
-    { id: '4',  name: '3. Stunde',  start: '09:40', end: '10:25', type: 'lesson' },
-    { id: '5',  name: '4. Stunde',  start: '10:25', end: '11:10', type: 'lesson' },
-    { id: '6',  name: '2. Pause',   start: '11:10', end: '11:30', type: 'break'  },
-    { id: '7',  name: '5. Stunde',  start: '11:30', end: '12:15', type: 'lesson' },
-    { id: '8',  name: '6. Stunde',  start: '12:15', end: '13:00', type: 'lesson' }
+    { id: '1', name: '1. Stunde', start: '07:50', end: '08:35', type: 'lesson' },
+    { id: '2', name: '2. Stunde', start: '08:35', end: '09:20', type: 'lesson' },
+    { id: '3', name: '1. Pause', start: '09:20', end: '09:40', type: 'break' },
+    { id: '4', name: '3. Stunde', start: '09:40', end: '10:25', type: 'lesson' },
+    { id: '5', name: '4. Stunde', start: '10:25', end: '11:10', type: 'lesson' },
+    { id: '6', name: '2. Pause', start: '11:10', end: '11:30', type: 'break' },
+    { id: '7', name: '5. Stunde', start: '11:30', end: '12:15', type: 'lesson' },
+    { id: '8', name: '6. Stunde', start: '12:15', end: '13:00', type: 'lesson' }
 ];
 
 const mtsSchedule = [
-    { id: 'mts_1',  name: '1. Stunde',   start: '07:50', end: '08:35', type: 'lesson' },
-    { id: 'mts_2',  name: '2. Stunde',   start: '08:35', end: '09:20', type: 'lesson' },
-    { id: 'mts_3',  name: '1. Pause',    start: '09:20', end: '09:40', type: 'break'  },
-    { id: 'mts_4',  name: '3. Stunde',   start: '09:40', end: '10:25', type: 'lesson' },
-    { id: 'mts_5',  name: '4. Stunde',   start: '10:25', end: '11:10', type: 'lesson' },
-    { id: 'mts_6',  name: '2. Pause',    start: '11:10', end: '11:30', type: 'break'  },
-    { id: 'mts_7',  name: '5. Stunde',   start: '11:30', end: '12:15', type: 'lesson' },
-    { id: 'mts_8',  name: '6. Stunde',   start: '12:15', end: '13:00', type: 'lesson' },
-    { id: 'mts_9',  name: '7. Stunde (Mittagspause)', start: '13:00', end: '13:55', type: 'break'  },
-    { id: 'mts_10', name: '8. Stunde',   start: '13:55', end: '14:40', type: 'lesson' },
-    { id: 'mts_11', name: '9. Stunde',   start: '14:40', end: '15:25', type: 'lesson' },
-    { id: 'mts_12', name: '3. Pause',    start: '15:25', end: '15:30', type: 'break'  },
-    { id: 'mts_13', name: '10. Stunde',  start: '15:30', end: '16:15', type: 'lesson' },
-    { id: 'mts_14', name: '11. Stunde',  start: '16:15', end: '17:00', type: 'lesson' }
+    { id: 'mts_1', name: '1. Stunde', start: '07:50', end: '08:35', type: 'lesson' },
+    { id: 'mts_2', name: '2. Stunde', start: '08:35', end: '09:20', type: 'lesson' },
+    { id: 'mts_3', name: '1. Pause', start: '09:20', end: '09:40', type: 'break' },
+    { id: 'mts_4', name: '3. Stunde', start: '09:40', end: '10:25', type: 'lesson' },
+    { id: 'mts_5', name: '4. Stunde', start: '10:25', end: '11:10', type: 'lesson' },
+    { id: 'mts_6', name: '2. Pause', start: '11:10', end: '11:30', type: 'break' },
+    { id: 'mts_7', name: '5. Stunde', start: '11:30', end: '12:15', type: 'lesson' },
+    { id: 'mts_8', name: '6. Stunde', start: '12:15', end: '13:00', type: 'lesson' },
+    { id: 'mts_9', name: 'Mittagspause', start: '13:00', end: '13:55', type: 'break' },
+    { id: 'mts_10', name: '8. Stunde', start: '13:55', end: '14:40', type: 'lesson' },
+    { id: 'mts_11', name: '9. Stunde', start: '14:40', end: '15:25', type: 'lesson' },
+    { id: 'mts_12', name: 'Kleine Pause', start: '15:25', end: '15:30', type: 'break' },
+    { id: 'mts_13', name: '10. Stunde', start: '15:30', end: '16:15', type: 'lesson' },
+    { id: 'mts_14', name: '11. Stunde', start: '16:15', end: '17:00', type: 'lesson' }
 ];
 
 // =============================================================
@@ -48,34 +48,34 @@ let weekPlan = {}; // { 'mon': { <blockId>: 'lesson'|'free' }, … }
 // DOM REFS
 // =============================================================
 const currentTimeDisplay = document.getElementById('currentTimeDisplay');
-const currentEventName   = document.getElementById('currentEventName');
-const nextEventHint      = document.getElementById('nextEventHint');
-const countdownDisplay   = document.getElementById('countdownDisplay');
-const countdownLabel     = document.getElementById('countdownLabel');
-const progressCircle     = document.getElementById('progressCircle');
-const startTimeDisplay   = document.getElementById('startTimeDisplay');
-const endTimeDisplay     = document.getElementById('endTimeDisplay');
-const ambientGlow        = document.getElementById('ambientGlow');
-const memeTicker         = document.getElementById('memeTicker');
+const currentEventName = document.getElementById('currentEventName');
+const nextEventHint = document.getElementById('nextEventHint');
+const countdownDisplay = document.getElementById('countdownDisplay');
+const countdownLabel = document.getElementById('countdownLabel');
+const progressCircle = document.getElementById('progressCircle');
+const startTimeDisplay = document.getElementById('startTimeDisplay');
+const endTimeDisplay = document.getElementById('endTimeDisplay');
+const ambientGlow = document.getElementById('ambientGlow');
+const memeTicker = document.getElementById('memeTicker');
 let hasFiredConfetti = false;
 
-const openSettingsBtn  = document.getElementById('openSettingsBtn');
+const openSettingsBtn = document.getElementById('openSettingsBtn');
 const closeSettingsBtn = document.getElementById('closeSettingsBtn');
-const saveSettingsBtn  = document.getElementById('saveSettingsBtn');
-const addEventBtn      = document.getElementById('addEventBtn');
-const settingsModal    = document.getElementById('settingsModal');
-const scheduleList     = document.getElementById('scheduleList');
+const saveSettingsBtn = document.getElementById('saveSettingsBtn');
+const addEventBtn = document.getElementById('addEventBtn');
+const settingsModal = document.getElementById('settingsModal');
+const scheduleList = document.getElementById('scheduleList');
 const scheduleRowTemplate = document.getElementById('scheduleRowTemplate');
 
-const loadMtsBtn  = document.getElementById('loadMtsBtn');
-const exportBtn   = document.getElementById('exportBtn');
-const importBtn   = document.getElementById('importBtn');
+const loadMtsBtn = document.getElementById('loadMtsBtn');
+const exportBtn = document.getElementById('exportBtn');
+const importBtn = document.getElementById('importBtn');
 const importInput = document.getElementById('importInput');
 
 const tabTimesBtn = document.getElementById('tabTimesBtn');
-const tabPlanBtn  = document.getElementById('tabPlanBtn');
-const tabTimes    = document.getElementById('tabTimes');
-const tabPlan     = document.getElementById('tabPlan');
+const tabPlanBtn = document.getElementById('tabPlanBtn');
+const tabTimes = document.getElementById('tabTimes');
+const tabPlan = document.getElementById('tabPlan');
 const weekPlanGrid = document.getElementById('weekPlanGrid');
 const savePlanBtn = document.getElementById('savePlanBtn');
 
@@ -154,7 +154,7 @@ const fireConfetti = () => {
         const animationEnd = Date.now() + duration;
         const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 100 };
         const randomInRange = (min, max) => Math.random() * (max - min) + min;
-        const interval = setInterval(function() {
+        const interval = setInterval(function () {
             const timeLeft = animationEnd - Date.now();
             if (timeLeft <= 0) return clearInterval(interval);
             const particleCount = 50 * (timeLeft / duration);
@@ -244,11 +244,11 @@ const updateTimer = () => {
     for (let i = 0; i < todaySchedule.length; i++) {
         const item = todaySchedule[i];
         const startSec = parseTime(item.start);
-        const endSec   = parseTime(item.end);
+        const endSec = parseTime(item.end);
 
         if (currentSeconds >= startSec && currentSeconds < endSec) {
             activeEvent = item;
-            nextEvent   = todaySchedule[i + 1] || null;
+            nextEvent = todaySchedule[i + 1] || null;
             break;
         } else if (startSec > currentSeconds) {
             nextEvent = item;
@@ -257,45 +257,45 @@ const updateTimer = () => {
     }
 
     if (activeEvent) {
-        const startSec      = parseTime(activeEvent.start);
-        const endSec        = parseTime(activeEvent.end);
+        const startSec = parseTime(activeEvent.start);
+        const endSec = parseTime(activeEvent.end);
         const totalDuration = endSec - startSec;
-        const elapsed       = currentSeconds - startSec;
-        const remaining     = endSec - currentSeconds;
+        const elapsed = currentSeconds - startSec;
+        const remaining = endSec - currentSeconds;
 
         const type = activeEvent.type || determineType(activeEvent.name);
         updateUIColors(type, remaining);
 
-        currentEventName.textContent   = activeEvent.name;
-        countdownDisplay.textContent   = formatTime(remaining);
-        countdownLabel.textContent     = "Verbleibend";
-        memeTicker.textContent         = getMemeForTime(remaining, type);
-        hasFiredConfetti               = false;
+        currentEventName.textContent = activeEvent.name;
+        countdownDisplay.textContent = formatTime(remaining);
+        countdownLabel.textContent = "Verbleibend";
+        memeTicker.textContent = getMemeForTime(remaining, type);
+        hasFiredConfetti = false;
 
         nextEventHint.textContent = nextEvent
             ? `Danach: ${nextEvent.name}`
             : "Letzter Block des Tages";
 
         startTimeDisplay.textContent = activeEvent.start;
-        endTimeDisplay.textContent   = activeEvent.end;
+        endTimeDisplay.textContent = activeEvent.end;
 
-        const progressPercentage            = elapsed / totalDuration;
+        const progressPercentage = elapsed / totalDuration;
         progressCircle.style.strokeDashoffset = 283 - (283 * progressPercentage);
 
     } else if (nextEvent) {
-        const startSec  = parseTime(nextEvent.start);
+        const startSec = parseTime(nextEvent.start);
         const remaining = startSec - currentSeconds;
 
         updateUIColors('idle');
         currentEventName.textContent = "Freizeit / Vor Unterricht";
         countdownDisplay.textContent = formatTime(remaining);
-        countdownLabel.textContent   = `Bis ${nextEvent.name}`;
-        nextEventHint.textContent    = `Nächster Block: ${nextEvent.start}`;
-        memeTicker.textContent       = "Die Ruhe vor dem Sturm...";
-        hasFiredConfetti             = false;
+        countdownLabel.textContent = `Bis ${nextEvent.name}`;
+        nextEventHint.textContent = `Nächster Block: ${nextEvent.start}`;
+        memeTicker.textContent = "Die Ruhe vor dem Sturm...";
+        hasFiredConfetti = false;
 
         startTimeDisplay.textContent = "--:--";
-        endTimeDisplay.textContent   = nextEvent.start;
+        endTimeDisplay.textContent = nextEvent.start;
         progressCircle.style.strokeDashoffset = 0;
 
     } else {
@@ -303,9 +303,9 @@ const updateTimer = () => {
         updateUIColors('idle');
         currentEventName.textContent = "Schulschluss";
         countdownDisplay.textContent = "00:00";
-        countdownLabel.textContent   = "Geschafft!";
-        nextEventHint.textContent    = "Bis morgen!";
-        memeTicker.textContent       = "Freiheit! 🎉";
+        countdownLabel.textContent = "Geschafft!";
+        nextEventHint.textContent = "Bis morgen!";
+        memeTicker.textContent = "Freiheit! 🎉";
 
         if (!hasFiredConfetti) {
             fireConfetti();
@@ -313,7 +313,7 @@ const updateTimer = () => {
         }
 
         startTimeDisplay.textContent = "--:--";
-        endTimeDisplay.textContent   = "--:--";
+        endTimeDisplay.textContent = "--:--";
         progressCircle.style.strokeDashoffset = 283;
     }
 };
@@ -359,15 +359,15 @@ const generateId = () => Math.random().toString(36).substr(2, 9);
 
 const createScheduleRow = (item) => {
     const clone = scheduleRowTemplate.content.cloneNode(true);
-    const row        = clone.querySelector('.schedule-item');
-    const nameInput  = clone.querySelector('.event-name-input');
+    const row = clone.querySelector('.schedule-item');
+    const nameInput = clone.querySelector('.event-name-input');
     const typeSelect = clone.querySelector('.type-select');
     const timeInputs = clone.querySelectorAll('.time-input');
-    const indicator  = clone.querySelector('.type-indicator');
+    const indicator = clone.querySelector('.type-indicator');
 
-    nameInput.value     = item.name  || '';
+    nameInput.value = item.name || '';
     timeInputs[0].value = item.start || '00:00';
-    timeInputs[1].value = item.end   || '00:00';
+    timeInputs[1].value = item.end || '00:00';
 
     const type = item.type || determineType(item.name || '');
     if (typeSelect) typeSelect.value = type;
@@ -400,12 +400,12 @@ const handleSaveSettings = () => {
     const rows = scheduleList.querySelectorAll('.schedule-item');
     const newSchedule = [];
     rows.forEach(row => {
-        const name       = row.querySelector('.event-name-input').value.trim();
+        const name = row.querySelector('.event-name-input').value.trim();
         const typeSelect = row.querySelector('.type-select');
-        const type       = typeSelect ? typeSelect.value : determineType(name);
-        const inputs     = row.querySelectorAll('.time-input');
-        const start      = inputs[0].value;
-        const end        = inputs[1].value;
+        const type = typeSelect ? typeSelect.value : determineType(name);
+        const inputs = row.querySelectorAll('.time-input');
+        const start = inputs[0].value;
+        const end = inputs[1].value;
         if (name && start && end) {
             newSchedule.push({ id: generateId(), name, start, end, type });
         }
@@ -514,7 +514,7 @@ const switchTab = (tab) => {
 };
 
 tabTimesBtn.addEventListener('click', () => switchTab('times'));
-tabPlanBtn.addEventListener('click',  () => switchTab('plan'));
+tabPlanBtn.addEventListener('click', () => switchTab('plan'));
 
 // =============================================================
 // MODAL OPEN / CLOSE
